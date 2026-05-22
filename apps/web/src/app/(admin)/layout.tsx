@@ -161,6 +161,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     if (stored !== null) setCollapsed(stored === 'true');
   }, []);
 
+  // Close the mobile drawer on any route change — covers nav links and
+  // any programmatic navigation (e.g. topbar title).
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Close the mobile drawer with the Escape key.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [mobileOpen]);
+
   const toggleCollapsed = () => {
     setCollapsed(c => {
       localStorage.setItem('fichajeshr-sidebar-collapsed', String(!c));
@@ -364,6 +380,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menú"
+            aria-expanded={mobileOpen}
             className="lg:hidden p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
           >
             <Menu className="w-5 h-5" />
