@@ -17,6 +17,7 @@ import clsx from 'clsx';
 import ChangePasswordModal from '@/components/ChangePasswordModal';
 import { ImpulsoDentIcon } from '@/components/ImpulsoDentIcon';
 import { GlobalFilters } from '@/components/layout/global-filters';
+import { ThemeSwitcher } from '@/components/theme-switcher';
 
 /* ─── ImpulsoDent Design System — Sidebar tokens ─────────────── */
 const S = {
@@ -378,6 +379,9 @@ export default function SuperAdminLayout({ children }: { children: React.ReactNo
           </div>
 
           <div className="flex items-center gap-1.5">
+            {/* Theme switcher */}
+            <ThemeSwitcher />
+
             <button className="relative p-1.5 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
               <Bell className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border border-white" />

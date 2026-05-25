@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import api from '@/lib/api';
 import { useState, useEffect } from 'react';
 import ChangePasswordModal from '@/components/ChangePasswordModal';
+import { ThemeSwitcher } from '@/components/theme-switcher';
 
 const tabs = [
   { href: '/dashboard',      label: 'Inicio',      icon: LayoutDashboard },
@@ -67,6 +68,7 @@ export default function EmployeeLayout({ children }: { children: React.ReactNode
           >
             <LayoutGrid size={15} />
           </a>
+          <ThemeSwitcher />
           <button
             onClick={() => setShowChangePwd(true)}
             className="flex items-center gap-1.5 text-brand-200 hover:text-white text-xs px-2.5 py-1.5 hover:bg-white/10 rounded-lg transition-colors"

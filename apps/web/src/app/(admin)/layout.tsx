@@ -16,6 +16,7 @@ import { useState, useEffect, Suspense } from 'react';
 import ChangePasswordModal from '@/components/ChangePasswordModal';
 import { GlobalFilters } from '@/components/layout/global-filters';
 import { ClinicSwitcher } from '@/components/layout/clinic-switcher';
+import { ThemeSwitcher } from '@/components/theme-switcher';
 import Cookies from 'js-cookie';
 import api from '@/lib/api';
 import { can, type Permission } from '@/lib/permissions';
@@ -400,6 +401,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Suspense fallback={null}>
               <ClinicSwitcher />
             </Suspense>
+
+            {/* Theme switcher */}
+            <ThemeSwitcher />
 
             {/* Bell */}
             <button className="relative p-1.5 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
